@@ -9,11 +9,11 @@ import { generateInteractionReply, createEmbedsForImageCommand, createEmbedForRe
 export const commands = [
     {
         name: 'ask',
-        description: 'Ask Anything!',
+        description: 'Frage mich irgendwas!',
         options: [
             {
                 name: "question",
-                description: "Your question",
+                description: "Deine Frage",
                 type: 3,
                 required: true
             }
@@ -21,11 +21,11 @@ export const commands = [
     },
     {
         name: 'image',
-        description: 'Ask Anything!',
+        description: 'Stelle dir etwas vor!',
         options: [
             {
                 name: "prompt",
-                description: "Your prompt",
+                description: "Deine Eingabe",
                 type: 3,
                 required: true
             }
@@ -37,13 +37,13 @@ export const commands = [
         options: [
             {
                 name: "user",
-                description: "user",
+                description: "Benutzer",
                 type: 3,
                 required: true
             },
             {
                 name: "prompt",
-                description: "Your prompt",
+                description: "Deine Eingabe",
                 type: 3,
                 required: true
             }
@@ -71,7 +71,7 @@ export async function handle_interaction_ask(interaction) {
     const question = interaction.options.getString("question")
     await interaction.deferReply()
     if (question.toLowerCase() == "reset") {
-        generateInteractionReply(interaction, user, question, "Who are you ?")
+        generateInteractionReply(interaction, user, question, "Wer bist du?")
         return;
     }
 

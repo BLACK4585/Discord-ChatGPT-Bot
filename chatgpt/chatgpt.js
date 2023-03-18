@@ -36,7 +36,7 @@ export async function askQuestion(question, cb, opts = {}) {
     const { conversationInfo } = opts
 
     let tmr = setTimeout(() => {
-        cb("Oppss, something went wrong! (Timeout)")
+        cb("Uff, etwas ist schiefgelaufen! (Timeout)")
     }, 120000)
 
     if (process.env.CONVERSATION_START_PROMPT.toLowerCase() != "false" && conversationInfo.newConversation) {
@@ -52,7 +52,7 @@ export async function askQuestion(question, cb, opts = {}) {
         conversationInfo.parentMessageId = response.parentMessageId
         cb(response.text)
     }catch(e){
-        cb("Oppss, something went wrong! (Error)")
+        cb("Uff, etwas ist schiefgelaufen! (Error)")
         console.error("dm error : " + e)
     }finally{
         clearTimeout(tmr)

@@ -120,18 +120,18 @@ export async function generateInteractionReply(interaction, user, question, cont
         //embed
         const embed = createEmbedForAskCommand(user, question, content)
         await interaction.editReply({ embeds: [embed] }).catch(() => { })
-        let stableDiffusionPrompt = content.slice(0, Math.min(content.length, 200))
-        stableDiffusion.generate(stableDiffusionPrompt, async (result) => {
-            const results = result.results
-            if (!results || results.length == 0) {
-                return;
-            }
-            let data = result.results[0].split(",")[1]
-            const buffer = Buffer.from(data, "base64")
-            let attachment = new AttachmentBuilder(buffer, { name: "result0.jpg" })
-            embed.setImage("attachment://result0.jpg")
-            await interaction.editReply({ embeds: [embed], files: [attachment] }).catch(() => { })
-        })
+        //let stableDiffusionPrompt = content.slice(0, Math.min(content.length, 200))
+        //stableDiffusion.generate(stableDiffusionPrompt, async (result) => {
+            //const results = result.results
+            //if (!results || results.length == 0) {
+            //    return;
+            //}
+            //let data = result.results[0].split(",")[1]
+            //const buffer = Buffer.from(data, "base64")
+            //let attachment = new AttachmentBuilder(buffer, { name: "result0.jpg" })
+            //embed.setImage("attachment://result0.jpg")
+            //await interaction.editReply({ embeds: [embed], files: [attachment] }).catch(() => { })
+        //})
     } else {
         //normal message
         if (content.length >= MAX_RESPONSE_CHUNK_LENGTH) {

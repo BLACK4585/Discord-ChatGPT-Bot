@@ -45,13 +45,13 @@ async function main() {
 
         if (message.content.toLowerCase() == "reset") {
             Conversations.resetConversation(user.id)
-            user.send("Who are you ?")
+            user.send("Wer bist du?")
             return;
         }
 
         let conversationInfo = Conversations.getConversation(user.id)
         try {
-            let sentMessage = await user.send("Hmm, let me think...")
+            let sentMessage = await user.send("Hmm, lass mich nachdenken..")
             askQuestion(message.content, async (response) => {
                 if (response.length >= MAX_RESPONSE_CHUNK_LENGTH) {
                     splitAndSendResponse(response, user)
